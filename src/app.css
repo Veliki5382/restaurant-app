@@ -1,0 +1,180 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #f4f4f4;
+}
+
+.App {
+  text-align: center;
+}
+
+main {
+  padding: 20px;
+}
+
+.page-content {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  padding: 50px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+/* Stilovi za forme */
+.reservation-form, .login-form {
+  display: flex;
+  flex-direction: column;
+}
+.reservation-form label, .login-form label {
+  margin-bottom: 15px;
+}
+.reservation-form input, .login-form input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+.reservation-form button, .login-form button {
+  padding: 10px 15px;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* Stilovi za narudžbine */
+.order-item {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+.status-u-pripremi {
+  border-left: 5px solid #ffc107; /* Žuta */
+}
+.status-spremno {
+  border-left: 5px solid #28a745; /* Zelena */
+}
+.status-isporučeno {
+  border-left: 5px solid #6c757d; /* Siva */
+}
+
+/* Stilovi za Header */
+.welcome-message {
+  margin: 0 auto; /* Centriranje poruke */
+  font-style: italic;
+}
+
+.logo {
+  height: 100px;
+}
+
+.logout-button:hover {
+  text-decoration: underline;
+}
+
+.app-header nav a.active {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+
+/* Stil za poruku o grešci na login stranici */
+.error-message {
+  color: #dc3545; /* Crvena boja */
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Stil za status narudžbine */
+.status-container {
+  margin-top: 10px;
+}
+
+.status-select {
+  margin-left: 10px;
+  padding: 5px;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+.login-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.button-link, .button-link-alt {
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  width: 120px;
+  border: rgb(22, 21, 21) solid 1px;
+  transition: all 0.3s ease;
+}
+
+.button-link {
+  background-color: #333;
+  color: white;
+}
+
+.button-link:hover {
+  background-color: #dadada;
+  color: #333;
+}
+
+.button-link-alt {
+  background-color: #616970;
+  color: white;
+}
+
+.button-link-alt:hover {
+    background-color: rgb(232, 240, 241);
+    color: #333;
+}
+
+.app-header nav ul li a:hover {
+  text-decoration: none;
+}
+
+.menu-title {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.category-section {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 40px;
+  border-bottom: 3px solid #eee;
+  padding-bottom: 20px;
+}
+
+.menu-item {
+  font-size: 1.2rem;
+  font-weight: normal;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.hline {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #ccc;
+  margin: 30px 0;
+}
