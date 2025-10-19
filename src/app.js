@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 import Header from './components/header';
@@ -10,13 +10,18 @@ import Profile from "./pages/profile";
 import Login from "./pages/login";
 import Register from "./pages/register";
 
-import { initialOrders , users} from "./data/test_data";
+import { initialOrders , users as initialUsers} from "./data/test_data";
 import './app.css';
 
 function App() {
   const [reservations, setReservations] = useState([]);
   const [orders, setOrders] = useState(initialOrders);
   const [currentUser, setCurrentUser] = useState(null);
+  const [users, ] = useState(initialUsers);
+
+  useEffect(() => {
+    console.log("Dodat je novi user:", users);
+  }, [users]);
 
   const handleLogin = (username, password) => {
     const user = users.find(u => u.username === username && u.password === password);
@@ -30,12 +35,19 @@ function App() {
     setCurrentUser(null);
   };
 
-  const handleRegister = (username, password, name, email) => {
+  const handleRegister = (name, username, password, email) => {
     const existingUser = users.find(u => u.username === username);
     if (existingUser) {
       return false; // Username already exists
     }
-    const newUser = { id: users.length + 1, username, password, name, email };
+
+    const newUser =  {
+      username: username,
+      password: password,
+      role: 'user',
+      name: name,
+      email: email
+    };
     users.push(newUser);
     setCurrentUser(newUser);
     return true;
