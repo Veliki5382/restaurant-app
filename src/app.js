@@ -17,11 +17,10 @@ function App() {
   const [reservations, setReservations] = useState([]);
   const [orders, setOrders] = useState(initialOrders);
   const [currentUser, setCurrentUser] = useState(null);
-  const [users, ] = useState(initialUsers);
+  const [users, setUsers] = useState(initialUsers);
 
-  useEffect(() => {
-    console.log("Dodat je novi user:", users);
-  }, [users]);
+  
+  console.log("Dodat je novi user:", users);
 
   const handleLogin = (username, password) => {
     const user = users.find(u => u.username === username && u.password === password);
@@ -35,10 +34,10 @@ function App() {
     setCurrentUser(null);
   };
 
-  const handleRegister = (name, username, password, email) => {
+  const handleRegister = (username, password, name, email) => {
     const existingUser = users.find(u => u.username === username);
     if (existingUser) {
-      return false; // Username already exists
+      return false;
     }
 
     const newUser =  {
@@ -48,7 +47,7 @@ function App() {
       name: name,
       email: email
     };
-    users.push(newUser);
+    setUsers([...users, newUser]);
     setCurrentUser(newUser);
     return true;
   };
@@ -58,11 +57,15 @@ function App() {
     setReservations([...reservations, reservationWithUser]);
   };
 
-    const updateOrderStatus = (orderId, newStatus) => {
+  const updateOrderStatus = (orderId, newStatus) => {
     setOrders(orders.map(order =>
       order.id === orderId ? { ...order, status: newStatus } : order
     ));
   };
+
+  const handleRemoveOrder = (orderId) => {
+    setOrders(orders.filter(order => order.id !== orderId));
+  }
 
   return (
     <Router>
@@ -84,7 +87,7 @@ function App() {
             />
             <Route
               path="/orders"
-              element={<Orders orders={orders} currentUser={currentUser} onUpdateStatus={updateOrderStatus}/>}
+              element={<Orders orders={orders} currentUser={currentUser} onUpdateStatus={updateOrderStatus} onRemoveOrder={handleRemoveOrder}/>}
             />
             <Route
               path="/profile"

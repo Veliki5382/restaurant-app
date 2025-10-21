@@ -11,17 +11,15 @@ function Register({ onRegister }) {
 
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
-    if (!name || !username || !password) {
+    if (!email || !name || !username || !password) {
       setError('Sva polja su obavezna.');
       return;
     }
-
-    // Pozivamo onRegister funkciju koju smo dobili iz App.js
-    const success = onRegister(name, username, password);
+    const success = onRegister(username, password, name, email);
 
     if (success) {
       alert('Uspešno ste se registrovali! Sada se možete prijaviti.');
-      navigate('/login'); // Preusmeravamo korisnika na stranicu za prijavu
+      navigate('/login');
     } else {
       setError('Korisničko ime već postoji. Molimo izaberite drugo.');
     }
